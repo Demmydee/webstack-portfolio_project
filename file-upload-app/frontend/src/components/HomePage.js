@@ -1,10 +1,23 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 const HomePage = () => {
 	  return (
 		      <div>
-		        <h1>Welcome to the Home Page</h1>
-		        <p>Please log in or register.</p>
+		        <h1>Welcome to the File Upload Service</h1>
+		        <p>Choose an action below:</p>
+
+		        <div>
+		          <Link to="/login">
+		            <button>Login</button>
+		          </Link>
+		          <Link to="/register">
+		            <button>Register</button>
+		          </Link>
+		        </div>
 		      </div>
 		    );
 };
 
 export default HomePage;
+

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
 	  return (
 		      <div>
-		        <h1>Welcome to the File Upload Service</h1>
+		        <h1>Welcome to FileCloud</h1>
 		        <p>Choose an action below:</p>
 
 		        <div>

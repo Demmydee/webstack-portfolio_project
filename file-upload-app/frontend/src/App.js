@@ -15,9 +15,17 @@ const App = () => {
 		      <div className="App">
 		        <header className="App-header">
 		          <img src={logo} className="App-logo" alt="logo" />
-		          <p>Upload your files to our online database.</p>
 		          
-		          {/* Adding Login and Register buttons */}
+		          <Routes>
+		            <Route path="/" element={<HomePage />} />
+		            <Route path="/login" element={<LoginPage setToken={setToken} />} />
+		            <Route path="/register" element={<RegisterPage />} />
+		            <Route path="/upload" element={<FileUpload token={token} />} />
+		            <Route path="/files" element={<FileList token={token} />} />
+		          </Routes>
+		          
+		          <p>Upload your files to our online database.</p>
+
 		          <div className="auth-buttons">
 		            <Link to="/login">
 		              <button>Login</button>
@@ -27,24 +35,17 @@ const App = () => {
 		            </Link>
 		          </div>
 
-		          <Routes>
-		            <Route path="/" element={<HomePage />} />
-		            <Route path="/login" element={<LoginPage setToken={setToken} />} />
-		            <Route path="/register" element={<RegisterPage />} />
-		            <Route path="/upload" element={<FileUpload token={token} />} />
-		            <Route path="/files" element={<FileList token={token} />} />
-		          </Routes>
 		        </header>
 		      </div>
 		    );
 };
 
 const Root = () => {
-	  return (
-		      <Router>
-		        <App />
-		      </Router>
-		    );
+	return (
+		<Router>
+		  <App />
+		</Router>
+	);
 };
 
 export default Root;

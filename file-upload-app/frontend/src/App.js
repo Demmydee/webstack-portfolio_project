@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FileUpload from './components/FileUpload';
@@ -24,16 +24,7 @@ const App = () => {
 		            <Route path="/files" element={<FileList token={token} />} />
 		          </Routes>
 		          
-		          <p>Upload your files to our online database.</p>
-
-		          <div className="auth-buttons">
-		            <Link to="/login">
-		              <button>Login</button>
-		            </Link>
-		            <Link to="/register">
-		              <button>Register</button>
-		            </Link>
-		          </div>
+		          <p>File upload services by Olaoye Ademola</p>
 
 		        </header>
 		      </div>

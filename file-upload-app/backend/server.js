@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const app = express();
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+//const multer = require('multer');
 
 // Database connection
 connectDB();
@@ -33,6 +35,7 @@ const User = mongoose.models.User || mongoose.model('User', userSchema);
 // Routes
 app.use('/api/user', userRoutes);
 app.use('/api/files', fileRoutes);
+
 app.post('/register', async (req, res) => {
 	const { username, email, password } = req.body;
 
@@ -40,8 +43,6 @@ app.post('/register', async (req, res) => {
 		    return res.status(400).json({ message: 'All fields are required' });
 		  }
 
-	//User.findOne({ email })
-	   // .then((existingUser) => {
 	try {
 		const existingUser = await User.findOne({ email });
 		if (existingUser) {
@@ -50,8 +51,6 @@ app.post('/register', async (req, res) => {
 	
 	const newUser = new User({ username, email, password });
 
-	//newUser.save()
-	  //.then((savedUser) => {
 	const savedUser = await newUser.save();
 
 		  res.status(201).json({
@@ -69,7 +68,6 @@ app.post('/register', async (req, res) => {
 			      	      error: err.message,
 			      });
 		    };
-	//return res.status(201).json({ message: 'Registration successful', user: { username, email } });
 };
 });
 
@@ -92,8 +90,12 @@ app.post('/login', async (req, res) => {
 			            return res.status(400).json({ message: 'Incorrect password' });
 		  }
 
+		  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 		  res.status(200).json({
-			message: 'Login successful', user });
+			message: 'Login successful',
+			user,
+			token
+		  });
 
 	} catch (err) {
 		console.error('Error during login:', err);

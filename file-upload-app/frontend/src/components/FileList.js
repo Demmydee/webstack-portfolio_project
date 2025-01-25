@@ -5,30 +5,30 @@ const FileList = ({ token }) => {
 	  const [files, setFiles] = useState([]);
 
 	  useEffect(() => {
-		      const fetchFiles = async () => {
-			            const response = await axios.get('/api/files/files', {
-					            headers: {
-							              'Authorization': `Bearer ${token}`,
-							            },
-					          });
-			            setFiles(response.data);
-			          };
+		const fetchFiles = async () => {
+		const response = await axios.get('/api/files/files', {
+			headers: {
+				'Authorization': `Bearer ${token}`,
+			},
+		});
+		setFiles(response.data);
+	  	};
 
-		      fetchFiles();
-		    }, [token]);
+		fetchFiles();
+	  }, [token]);
 
 	  return (
 		      <div>
 		        <h2>Your Files</h2>
 		        <ul>
 		          {files.map(file => (
-				            <li key={file._id}>
-				              <p>{file.filename}</p>
-				              <p>{file.uploadDate}</p>
-				              <p>{file.fileSize} bytes</p>
-				              <p>{file.fileType}</p>
-				            </li>
-				          ))}
+				<li key={file._id}>
+				   <p>{file.filename}</p>
+				   <p>{file.uploadDate}</p>
+				   <p>{file.fileSize} bytes</p>
+				   <p>{file.fileType}</p>
+				</li>
+			  ))}
 		        </ul>
 		      </div>
 		    );

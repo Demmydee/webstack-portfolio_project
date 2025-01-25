@@ -20,14 +20,22 @@ const LoginPage = () => {
 			       'Content-Type': 'application/json',
 			     }
 			   });
+			   const token = response.data.token;
+			   if (token) {
+				localStorage.setItem('token', token);
+				console.log('Token saved in localStorage:', token);
+			   } else {
+				console.log('No token returned from login');
+						            }
 			   setMessage('Login successful');
+			   console.log('Token received:', token);
 			   console.log(response.data);
 
 			   navigate('/upload');
 
 		       } catch (error) {
 			   setMessage('Login failed');
-			   console.error('Error during login:', error);
+			   console.error('Error during log in:', error);
 			   }
 		    };
 

@@ -15,7 +15,6 @@ const App = () => {
 		      <div className="App">
 		        <header className="App-header">
 		          <img src={logo} className="App-logo" alt="logo" />
-		          
 		          <Routes>
 		            <Route path="/" element={<HomePage />} />
 		            <Route path="/login" element={<LoginPage setToken={setToken} />} />

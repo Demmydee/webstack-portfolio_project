@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const LoginPage = () => {
 	  const [email, setEmail] = useState('');
@@ -23,12 +23,10 @@ const LoginPage = () => {
 			   const token = response.data.token;
 			   if (token) {
 				localStorage.setItem('token', token);
-				console.log('Token saved in localStorage:', token);
 			   } else {
 				console.log('No token returned from login');
 						            }
 			   setMessage('Login successful');
-			   console.log('Token received:', token);
 			   console.log(response.data);
 
 			   navigate('/upload');
@@ -60,6 +58,11 @@ const LoginPage = () => {
 		          <button type="submit">Login</button>
 		        </form>
 		        {message && <p>{message}</p>}
+		  	<div className="home-button">
+		     	  <Link to="/">
+		            <button>Go to Homepage</button>
+		     	  </Link>
+		  	</div>
 		      </div>
 		    );
 };

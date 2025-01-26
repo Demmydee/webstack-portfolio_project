@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const FileUpload = ({token}) => {
 	console.log('Token being sent:', token);
@@ -43,12 +44,19 @@ const FileUpload = ({token}) => {
 	};
 
 	  return (
+		  <div>
 		      <div>
 		        <input type="file" onChange={handleFileChange} />
 		        <button onClick={handleFileUpload}>Upload</button>
 		        <p>{message}</p>
 		      </div>
-		    );
+		      <div className="home-button">
+		        <Link to="/">
+		          <button>Logout</button>
+		        </Link>
+		      </div>
+		  </div>
+	);
 };
 
 export default FileUpload;

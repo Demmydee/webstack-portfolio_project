@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import FileUpload from './components/FileUpload';
+import UserFiles from './components/UserFiles'
 import FileList from './components/FileList';
 import logo from './logo.svg';
 import HomePage from './components/HomePage';
@@ -21,6 +22,7 @@ const App = () => {
 		            <Route path="/register" element={<RegisterPage />} />
 		            <Route path="/upload" element={<FileUpload token={token} />} />
 		            <Route path="/files" element={<FileList token={token} />} />
+		  	    <Route path="/user-files" element={<UserFiles token={localStorage.getItem('token')} />} />
 		          </Routes>
 		          
 		          <p>File upload services by Olaoye Ademola</p>

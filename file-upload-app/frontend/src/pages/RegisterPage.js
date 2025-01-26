@@ -9,6 +9,8 @@ const RegisterPage = () => {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [message, setMessage] = useState('');
+	const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
 	const handleSubmit = async (e) => {
 		    e.preventDefault();
@@ -24,6 +26,8 @@ const RegisterPage = () => {
 		    try {
 			    const response = await axios.post('http://localhost:5000/register', registrationData);
 			    console.log('Registration successful:', response.data);
+			    setMessage('Registration successful! Please log in');
+			    setRegistrationSuccess(true);
 
 		    } catch (err) {
 		      console.error('Error during registration:', err);
@@ -34,13 +38,55 @@ const RegisterPage = () => {
 		  };
 
 	  return (
-		      <div className="register-container">
+		  <div>
+		              <h2>Register</h2>
+		              <form onSubmit={handleSubmit}>
+		                  <input
+		                      type="text"
+		                      placeholder="Username"
+		                      value={username}
+		                      onChange={(e) => setUsername(e.target.value)}
+		                      required
+		                  />
+		                  <input
+		                      type="email"
+		                      placeholder="Email"
+		                      value={email}
+		                      onChange={(e) => setEmail(e.target.value)}
+		                      required
+		                  />
+		                  <input
+		                      type="password"
+		                      placeholder="Password"
+		                      value={password}
+		                      onChange={(e) => setPassword(e.target.value)}
+		                      required
+		                  />
+		                  <button type="submit">Register</button>
+		              </form>
+
+		              {/* Display success message and Login button */}
+		              {registrationSuccess && (
+				                      <div>
+				                          <p>{message}</p>
+				                          <Link to="/login">
+				                              <button>Login</button>
+				                          </Link>
+				                      </div>
+				                  )}
+
+		              {/* Display any error or generic message */}
+		              {!registrationSuccess && message && <p>{message}</p>}
+		          </div>
+		      );
+
+
+
+		      /*<div className="register-container">
 		        <h2>Register</h2>
 
-		        {/* Display error message if registration fails */}
 		        {error && <div className="error-message">{error}</div>}
 
-		        {/* Registration Form */}
 		        <form onSubmit={handleSubmit}>
 		          <div className="form-group">
 		            <label htmlFor="username">Username</label>
@@ -80,14 +126,13 @@ const RegisterPage = () => {
 		          </button>
 		        </form>
 
-		        {/* Home Button */}
 		        <div className="home-button">
 		          <Link to="/">
 		            <button>Go to Homepage</button>
 		          </Link>
 		        </div>
-		      </div>
-		    );
+		      </div>*/
+
 };
 
 export default RegisterPage;

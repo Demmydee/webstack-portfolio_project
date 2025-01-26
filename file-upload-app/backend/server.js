@@ -48,18 +48,24 @@ app.post('/register', async (req, res) => {
 		if (existingUser) {
 		  return res.status(400).json({ message: 'Email already exists' });
 		}
-	
-	const newUser = new User({ username, email, password });
+		const existingUsername = await User.findOne({ username });
+		if (existingUsername) {
+		  return res.status(400).json({ message: 'Username already exists' });
+		}
+		//return res.status(201).json({ message: 'Registration successful, please login' });
 
-	const savedUser = await newUser.save();
+		const newUser = new User({ username, email, password });
 
-		  res.status(201).json({
-			  message: 'Registration successful',
-			  user: {
-				  username: savedUser.username,
-				  email: savedUser.email
-			  }
+		const savedUser = await newUser.save();
+
+			res.status(201).json({
+				message: 'Registration successful',
+				user: {
+					username: savedUser.username,
+					email: savedUser.email
+				}
 			});
+	
 	} catch(err) {
 		      console.error('Error saving user to MongoDB:', err);
 		      if (!res.headersSent) {

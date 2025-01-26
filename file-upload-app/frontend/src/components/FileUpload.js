@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const FileUpload = ({token}) => {
 	console.log('Token being sent:', token);
 	const [file, setFile] = useState(null);
 	const [message, setMessage] = useState('');
+	const [userFiles, setUserFiles] = useState([]);
+	const navigate = useNavigate();
 
 	const handleFileChange = (e) => {
 		setFile(e.target.files[0]);
@@ -42,6 +44,28 @@ const FileUpload = ({token}) => {
 			}
 		}
 	};
+	 /* const handleViewFiles = async () => {
+		if (!token) {
+			setMessage('You must be logged in to view files.');
+			return;
+		}
+		          
+		try {
+			const response = await axios.get('http://localhost:5000/api/files/user/files', {
+				headers: {
+					'Authorization': `Bearer ${token}`,
+				},
+			});
+			setUserFiles(response.data);
+		} catch (error) {
+			console.error('Error fetching files:', error);
+			setMessage('Error fetching files.');
+		}
+	};*/
+
+	  const goToUserFiles = () => {
+		navigate('/user-files');
+	};
 
 	  return (
 		  <div>
@@ -54,6 +78,9 @@ const FileUpload = ({token}) => {
 		        <Link to="/">
 		          <button>Logout</button>
 		        </Link>
+		      </div>
+		      <div className="user-files-button">
+		        <button onClick={goToUserFiles}>View My Files</button>
 		      </div>
 		  </div>
 	);

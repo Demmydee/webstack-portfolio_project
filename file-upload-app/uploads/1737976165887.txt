@@ -1,0 +1,12 @@
+{/* Home Button */}
+<div className="home-button">
+   <Link to="/">
+      <button>Go to Homepage</button>
+   </Link>
+</div>
+
+<div className="home-button">
+                        <Link to="/uploads">
+                          <button>Logout</button>
+                        </Link>
+                      </div>

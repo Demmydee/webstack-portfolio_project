@@ -21,7 +21,7 @@ const RegisterPage = () => {
 			          password,
 			        };
 
-		    setLoading(true);
+		    //setLoading(true);
 
 		    try {
 			    const response = await axios.post('http://localhost:5000/register', registrationData);
@@ -33,7 +33,7 @@ const RegisterPage = () => {
 		      console.error('Error during registration:', err);
 		      setError(err.response?.data?.message || 'Registration failed');
 		    } finally {
-		      setLoading(false);
+		     // setLoading(false);
 		    }
 		  };
 

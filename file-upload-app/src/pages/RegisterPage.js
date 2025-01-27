@@ -7,8 +7,8 @@ const RegisterPage = () => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [setError] = useState(null);
+	const [setLoading] = useState(false);
 	const [message, setMessage] = useState('');
 	const [registrationSuccess, setRegistrationSuccess] = useState(false);
 

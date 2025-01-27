@@ -12,7 +12,7 @@ const jwt = require('jsonwebtoken');
 //const multer = require('multer');
 
 // Database connection
-connectDB();
+//connectDB();
 
 // Middlewares
 app.use(cors());
@@ -20,7 +20,18 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 //Mongodb connection string
-const dbUri = 'mongodb://localhost:27017/fileupload';
+const dbUri = process.env.MONGODB_URI || 'mongodb+srv://demmydd44:Seandatabase_44@cluster0.otyyk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+mongoose.connect(dbUri, {
+	  useNewUrlParser: true,
+	  useUnifiedTopology: true,
+})
+.then(() => {
+	  console.log('MongoDB connection successful');
+})
+.catch((err) => {
+	  console.error('Error connecting to MongoDB:', err);
+});
 
 //Define the user schema
 const userSchema = new mongoose.Schema({

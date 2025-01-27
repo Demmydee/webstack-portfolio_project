@@ -1,0 +1,68 @@
+1
+00:00:00,130 --> 00:00:00,730
+Hey guys,
+
+2
+00:00:00,730 --> 00:00:05,730
+welcome to Day 6 of 100 Days of code. And well done from making it this
+
+3
+00:00:07,150 --> 00:00:07,983
+far.
+
+4
+00:00:08,200 --> 00:00:13,200
+So today we're going to talk about code blocks and indentation as well as
+
+5
+00:00:13,540 --> 00:00:18,540
+functions and also a different flavor from the for loops that we saw yesterday.
+
+6
+00:00:19,810 --> 00:00:20,110
+Today
+
+7
+00:00:20,110 --> 00:00:24,580
+we're going to talk about while loops as well. And to learn all of these things,
+
+8
+00:00:24,880 --> 00:00:26,530
+we're going to use the help of something
+
+9
+00:00:26,680 --> 00:00:28,930
+that's very similar to Karel the robot.
+
+10
+00:00:29,560 --> 00:00:32,409
+And this is something I use when I first learnt how to code
+
+11
+00:00:32,800 --> 00:00:35,950
+and it's one of my favorite tools for learning programming
+
+12
+00:00:36,130 --> 00:00:41,130
+especially as we get into more difficult concepts like functions and while loops
+
+13
+00:00:41,140 --> 00:00:45,970
+et cetera. And by the end of the day, we're going to be writing the code
+
+14
+00:00:46,210 --> 00:00:51,210
+that's required to instruct our little robot to be able to complete any
+
+15
+00:00:51,640 --> 00:00:55,390
+randomly generated maze. So that's the goal
+
+16
+00:00:55,690 --> 00:00:57,430
+and if you head over to the next lesson,
+
+17
+00:00:57,640 --> 00:01:00,820
+let's get started and let's start learning about some of these things.
+

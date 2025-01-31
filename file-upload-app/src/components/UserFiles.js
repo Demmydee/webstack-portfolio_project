@@ -38,7 +38,7 @@ const UserFiles = ({ token }) => {
 		     <ul>
 		     	{userFiles.map((file) => (
 				<li key={file._id}>
-					<a href={`http://localhost:5000/uploads/${file.filename}`} target="_blank" rel="noopener noreferrer">
+					<a href={`https://webstack-portfolio-project-mk17.onrender.com/uploads/${file.filename}`} target="_blank" rel="noopener noreferrer">
 						{file.filename}
 					</a>
 				</li>

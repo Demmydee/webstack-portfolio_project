@@ -1,0 +1,176 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+const RegisterPage = () => {
+  // State for form fields
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle registration logic here (e.g., send data to backend)
+    console.log('User Registered:', { username, email, password });
+  };
+
+  return (
+    <div className="register-container">
+      <h2>Register</h2>
+      {/* Registration Form */}
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit">Register</button>
+      </form>
+
+      {/* Home Button */}
+      <div className="home-button">
+        <Link to="/">
+          <button>Go to Homepage</button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterPage;
+
+
+using axios
+
+
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+const RegisterPage = () => {
+  // State for form fields
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Prepare registration data
+    const registrationData = {
+      username,
+      email,
+      password,
+    };
+
+    setLoading(true); // Show loading state
+
+    try {
+      // Send registration data to backend API using axios
+      const response = await axios.post('https://yourapi.com/register', registrationData);
+      console.log('Registration successful:', response.data);
+      // Handle successful registration (e.g., redirect user, show success message)
+    } catch (err) {
+      console.error('Error during registration:', err);
+      setError(err.response?.data?.message || 'Registration failed');
+    } finally {
+      setLoading(false); // Hide loading state
+    }
+  };
+
+  return (
+    <div className="register-container">
+      <h2>Register</h2>
+
+      {/* Display error message if registration fails */}
+      {error && <div className="error-message">{error}</div>}
+
+      {/* Registration Form */}
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Registering...' : 'Register'}
+        </button>
+      </form>
+
+      {/* Home Button */}
+      <div className="home-button">
+        <Link to="/">
+          <button>Go to Homepage</button>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default RegisterPage;
+
+
+http://localhost:3000/register
+Failed to load resource: the server responded with a status of 500 (Internal Server Error)Understand this errorAI
+RegisterPage.js:29 Error during registration: AxiosError
+handleSubmit @ RegisterPage.js:29

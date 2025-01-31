@@ -7,8 +7,8 @@ const RegisterPage = () => {
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [setError] = useState(null);
+	const [setLoading] = useState(false);
 	const [message, setMessage] = useState('');
 	const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
@@ -21,10 +21,10 @@ const RegisterPage = () => {
 			          password,
 			        };
 
-		    setLoading(true);
+		    //setLoading(true);
 
 		    try {
-			    const response = await axios.post('http://localhost:5000/register', registrationData);
+			    const response = await axios.post('http://localhost:5000/register'|| 'https://webstack-portfolio-project-mk17.onrender.com', registrationData);
 			    console.log('Registration successful:', response.data);
 			    setMessage('Registration successful! Please log in');
 			    setRegistrationSuccess(true);
@@ -33,7 +33,7 @@ const RegisterPage = () => {
 		      console.error('Error during registration:', err);
 		      setError(err.response?.data?.message || 'Registration failed');
 		    } finally {
-		      setLoading(false);
+		     // setLoading(false);
 		    }
 		  };
 

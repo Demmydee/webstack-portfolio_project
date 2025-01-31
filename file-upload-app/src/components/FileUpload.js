@@ -29,7 +29,7 @@ const FileUpload = ({token}) => {
 		formData.append('file', file);
 
 		try {
-			await axios.post('http://localhost:5000/api/files/upload', formData, {
+			await axios.post('https://webstack-portfolio-project-mk17.onrender.com/api/files/upload', formData, {
 				headers: {
 					'Authorization': `Bearer ${token}`,
 					'Content-Type': 'multipart/form-data',

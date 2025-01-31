@@ -13,7 +13,7 @@ const UserFiles = ({ token }) => {
 
 		const fetchUserFiles = async () => {
 			try {
-				const response = await axios.get('http://localhost:5000/api/files/user-files', {
+				const response = await axios.get('https://webstack-portfolio-project-mk17.onrender.com/user-files', {
 					headers: {
 						'Authorization': `Bearer ${token}`,
 					},
